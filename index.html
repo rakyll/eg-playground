@@ -84,25 +84,18 @@
             background-color: #fbf8e6;
         }
         .prompt {
-            width: 100%;
             height: 200px;
-            /* padding: 5px; */
             overflow-y: hidden;
-        }
-        .prompt .config {
-            font-size: 18px;
         }
         .prompt .button {
             margin: 0px;
             background-color: #2b9a66;
         }
         .prompt .text-config textarea {
-            height: 110px;
-        }
-        .prompt .text-config textarea, .prompt .text-config input {
+            height: 140px;
             margin: 0px;
             padding: 3px;
-            font-size: 16px;
+            font-size: 13px;
             border: none;
             border-bottom: solid 1px #e5e7eb;
             width: 100%;
@@ -137,27 +130,36 @@
     <div class="main">
         <div class="history">
             <div class="line outgoing">
-                &gt;&gt; node_fragment { id = "prompt_1", chunk_fragment { data = "hello", metadata { mimetype = "text/plain" } } }
+                &gt;&gt; node_fragment { id = "prompt_1" chunk_fragment { data = "hello" metadata { mimetype = "text/plain" } } }
             </div>
             <div class="line outgoing">
-                &gt;&gt; action { name="GENERATE", input { name = "prompt", id = "prompt_1" }, output = { name = "response", id = "response_1"} }
+                &gt;&gt; action { name="GENERATE" input { name = "prompt" id = "prompt_1" } output = { name = "response" id = "response_1"} }
             </div>
             <div class="line incoming">
-                &lt;&lt; node_fragment { id = "response_1", seq = 0, continued = true, chunk_fragment { data = "Hi! How can I help you? 😊", metadata { mimetype = "text/plain" } } }
+                &lt;&lt; node_fragment { id = "response_1" seq = 0 continued = true chunk_fragment { data = "Hi! How can I help you? 😊" metadata { mimetype = "text/plain" } } }
             </div>
             <div class="line incoming">
-                &lt;&lt; node_fragment { id = "response_1", seq = 1, continued = true, chunk_fragment { data = "I am a friendly", metadata { mimetype = "text/plain" } } }
+                &lt;&lt; node_fragment { id = "response_1" seq = 1 continued = true, chunk_fragment { data = "I am a friendly" metadata { mimetype = "text/plain" } } }
             </div>
             <div class="line incoming">
-                &lt;&lt; node_fragment { id = "response_1", seq = 2, chunk_fragment { data = "ghost. 👻 👻 👻 ", metadata { mimetype = "text/plain" } } }
+                &lt;&lt; node_fragment { id = "response_1" seq = 2 chunk_fragment { data = "ghost. 👻 👻 👻 ", metadata { mimetype = "text/plain" } } }
             </div>
 
         </div>
         <div class="prompt">
             <div class="config">
                 <div class="text-config">
-                    <input placeholder="ID"><br>
-                    <textarea placeholder="Text"></textarea>
+                    <textarea placeholder="Text">
+{
+    id = 'prompt_2'
+    chunk_fragment = {
+        data = ''
+        metadata = {
+            mimetype = 'text/plain'
+        }
+    }
+}
+                    </textarea>
                 </div>
                 <button class="button">Send</button>
             </div>
