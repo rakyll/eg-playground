@@ -69,30 +69,46 @@
             overflow-y: hidden;
         }
         .history {
-            padding: 10px;
             overflow-y: auto;
-            height: calc(100% - 150px);
+            height: calc(100% - 200px);
             border-bottom: 1.5px solid #e5e7eb;
+        }
+        .history .line {
+            padding: 5px;
+            border-bottom: 1.5px solid #f7f7f8;
+        }
+        .outgoing {
+            background-color: #cef1d7;
+        }
+        .incoming {
+            background-color: #fbf8e6;
         }
         .prompt {
             padding: 5px 5px;
-            height: 140px;
+            width: 100%;
+            height: 200px;
+            display: flex;
             overflow-y: hidden;
-            background-color: #333333;
+        }
+        .prompt .config {
+            flex: 1;
+            font-size: 18px;
         }
         .prompt .button {
-            width: 80px;
-            height: 100%;
-            display: inline;
+            flex: 1;
+            margin: 0px;
+            width: 100px;
             background-color: #2b9a66;
         }
-        .prompt textarea {
-            width: calc(100% - 100px);
+        .prompt .text-config input {
+            margin: 0px;
             font-size: 18px;
-            color: #333333;
             border: solid 1px #e5e7eb;
             padding: 3px;
-            height: 110px;
+        }
+        .prompt .text-config textarea {
+            margin: 0px;
+            border: solid 1px #e5e7eb;
         }
     </style>
 </head>
@@ -124,13 +140,31 @@
 
     <div class="main">
         <div class="history">
-            action { name="GENERATE", input { name = "prompt", id = "prompt_1" }, output = { name = "response", id = "response_1 "} }
-            <br>
-            node_fragment {}
+            <div class="line outgoing">
+                &gt;&gt; node_fragment { id = "prompt_1", chunk_fragment { data = "hello", metadata { mimetype = "text/plain" } } }
+            </div>
+            <div class="line outgoing">
+                &gt;&gt; action { name="GENERATE", input { name = "prompt", id = "prompt_1" }, output = { name = "response", id = "response_1"} }
+            </div>
+            <div class="line incoming">
+                &lt;&lt; node_fragment { id = "response_1", seq = 0, continued = true, chunk_fragment { data = "Hi! How can I help you? 😊", metadata { mimetype = "text/plain" } } }
+            </div>
+            <div class="line incoming">
+                &lt;&lt; node_fragment { id = "response_1", seq = 1, continued = true, chunk_fragment { data = "I am a friendly", metadata { mimetype = "text/plain" } } }
+            </div>
+            <div class="line incoming">
+                &lt;&lt; node_fragment { id = "response_1", seq = 2, chunk_fragment { data = "ghost. 👻 👻 👻 ", metadata { mimetype = "text/plain" } } }
+            </div>
+
         </div>
         <div class="prompt">
-            <textarea placeholder=""></textarea>
-            <div class="button">Send</div>
+            <div class="config">
+                <div class="text-config">
+                    <input placeholder="ID">
+                    <textarea placeholder="Content"></textarea>
+                </div>
+                <button class="button">Send</button>
+            </div>
         </div>
     </div>
 
