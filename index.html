@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evergreen Playground</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+    <style>
+        html, body {  /* Apply height to both html and body */
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-y: hidden;
+        }
+        body {
+            display: flex;
+            font-family: 'Roboto Flex';
+            letter-spacing: 0.005em;
+        }
+        .sidebar {
+            display: block;
+            height: 100%;
+            width: 275px;
+            background: color(display-p3 0.97 0.977 0.974);
+            border-right: 1.5px solid #e5e7eb;
+        }
+        .sidebar h2 {
+            line-height: 28px;
+            font-size: 20px;
+            font-weight: normal;
+            margin: 0px;
+        }
+        .sidebar h3 {
+            font-size: 16px;
+            font-weight: normal;
+            margin: 5px 0px;
+        }
+        .sidebar .box {
+            border-bottom: 1.5px solid #e5e7eb;
+            padding: 10px;
+        }
+        .endpoint input {
+            width: 247px;
+            font-size: 18px;
+            color: #333333;
+            border: solid 1px #e5e7eb;
+            padding: 3px;
+        }
+        .button {
+            background-color: #333333;
+            font-size: 16px;
+            padding: 7px;
+            color: #ffffff;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            border: none;
+            border-radius: 2px;
+            margin: 10px 0px;
+        }
+        .button-green {
+            background-color: #2b9a66;
+        }
+        .main {
+            width: 100%;
+            overflow-y: hidden;
+        }
+        .history {
+            padding: 10px;
+            overflow-y: auto;
+            height: calc(100% - 150px);
+            border-bottom: 1.5px solid #e5e7eb;
+        }
+        .prompt {
+            padding: 5px 5px;
+            height: 140px;
+            overflow-y: hidden;
+            background-color: #333333;
+        }
+        .prompt .button {
+            width: 80px;
+            height: 100%;
+            display: inline;
+            background-color: #2b9a66;
+        }
+        .prompt textarea {
+            width: calc(100% - 100px);
+            font-size: 18px;
+            color: #333333;
+            border: solid 1px #e5e7eb;
+            padding: 3px;
+            height: 110px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="box title">
+            <h2>🌲 Playground</h2>
+        </div>
+        <div class="box endpoint">
+            <input spellcheck="false" placeholder="Evergreen endpoint" type="text" class="endpoint" value="http://localhost:9999/">
+            <button style="margin-bottom: 0px;" class="button button-green">Connect</button>
+        </div>
+
+        <div class="box">
+            <h3>Inputs</h3>
+            <button class="button">Text</button>
+            <button class="button">📄 File</button>
+            <button class="button">🎤 Microphone</button>
+        </div>
+
+        <div class="box">
+            <h3>Actions</h3>
+            <button class="button">⚡ Generate</button>
+        </div>
+
+
+    </div> <!-- end of sidebar -->
+
+    <div class="main">
+        <div class="history">
+            action { name="GENERATE", input { name = "prompt", id = "prompt_1" }, output = { name = "response", id = "response_1 "} }
+            <br>
+            node_fragment {}
+        </div>
+        <div class="prompt">
+            <textarea placeholder=""></textarea>
+            <div class="button">Send</div>
+        </div>
+    </div>
+
+    <script>
+    </script>
+</body>
+</html>
